@@ -65,9 +65,6 @@ class Walker:
                 raise BasisError(f"Basis must be a list of length {self.dim} for a {self.dim} dimensional walker")
         else:
             raise BasisError("Basis must be a list of basis vectors")
-        #Check whether given set of vectors is linearly independent
-        if np.abs(np.linalg.det(np.array(basis))) <= 1e-5:
-            raise BasisError("Basis mut be linearly independent")
         self.__basis = basis
 
     def __orthonormal_basis(self):
@@ -240,9 +237,11 @@ class WalkerAnalyzer:
 
 def main():
     #Example random walker
-    w1 = Walker(30, 4, resting_allowed=True, orthonormal_basis=True)
-    wa1 = WalkerAnalyzer(w1)
-    wa1.plot_spectral_dimension(wa1.spectral_dimension(wa1.return_probability(int(1e6))))
+    w = Walker(30, 2, resting_allowed=True, orthonormal_basis=True)
+    wa = WalkerAnalyzer(w)
+    probability = wa.return_probability(int(1e6))
+    wa.plot_probability(probability)
+    wa.plot_spectral_dimension(wa.spectral_dimension(probability))
     
 
 

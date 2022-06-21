@@ -20,7 +20,7 @@ w = Walker(nstep, dim, resting_allowed=False, orthonormal_basis=True)
 - `orthonormal_basis`: Boolean, initialize the walker with an orthonormal basis (i.e. a square grid) with dimension `dim`. If False, you have to define your own basis before running a simulation (see below)
 
 ## Define basis ##
-The basis must be a Python list containing `dim` linearly independent basis vectors in the form of numpy arrays of length `dim`. Example:
+The basis must be a Python list containing `dim` basis vectors in the form of numpy arrays of length `dim`. Example:
 ```python
 w = Walker(nstep=30, dim=2, orthonormal_basis=False)
 basis = [np.array([1.0, 1.0], np.array([1.0, -1.0]))]
